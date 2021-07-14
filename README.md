@@ -1,4 +1,4 @@
-# Como criar tiro Unity
+# Unity TAT_VR
 
 Esse projeto faz parte de uma série em que eu ensino como criar tiro no Unity de diferentes formas.
 
