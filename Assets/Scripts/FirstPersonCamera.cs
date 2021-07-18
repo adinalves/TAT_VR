@@ -54,7 +54,7 @@ public class FirstPersonCamera : MonoBehaviour {
 
         rotationY = Mathf.Clamp(rotationY, angleYmin, angleYmax);
 
-        characterBody.localEulerAngles = new Vector3(0, rotationX, 0);
+        //characterBody.localEulerAngles = new Vector3(0, rotationX, 0);
 
         transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
 

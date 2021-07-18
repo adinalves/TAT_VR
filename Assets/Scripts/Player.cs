@@ -16,7 +16,9 @@ public class Player : MonoBehaviour {
     Vector3 currentVelocity;
 
     float acceleration = 50f;
-    float maxSpeed = 5f;
+   
+    //float maxSpeed = 5f;
+    float maxSpeed = 0;
 
     float gravity;
     float jumpSpeed;
@@ -49,6 +51,7 @@ public class Player : MonoBehaviour {
         strafe  = strafeInput * transform.right;
 
         direction = (forward + strafe).normalized;
+        
 
         verticalVelocity += gravity * Time.deltaTime * Vector3.up;
 
@@ -65,6 +68,7 @@ public class Player : MonoBehaviour {
         }
 
         velocity = Vector3.SmoothDamp(velocity, direction * maxSpeed, ref currentVelocity, maxSpeed / acceleration);
+        
         
         controller.Move((velocity + verticalVelocity) * Time.deltaTime);
 

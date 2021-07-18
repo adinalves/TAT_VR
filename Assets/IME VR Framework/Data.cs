@@ -21,7 +21,9 @@ public class Data {
       * public OtherClass otherClass; //A classe deve estar definida como [Serializable]
       * public List<...> aList;
       */
-    public string name = null;
+    public string name;
+    public int acertos;
+    public int mao; 
 
     ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -38,7 +40,8 @@ public class Data {
      *      DAO.getInstance().save(); //Persistindo a modificação
      * }
      */
-    public string getName()
+    
+    /*public string getName()
     {
         return name;
     }
@@ -49,5 +52,24 @@ public class Data {
         DAO.getInstance().save(); //Persistindo a modificação
     }
 
+    public void setAcerto(int acertos)
+    {
+        this.acertos = acertos;
+        DAO.getInstance().save(); //Persistindo a modificação
+    }
+
+    public int getAcerto()
+    {
+        return acertos;
+    }
+*/
+
     //////////////////////////////////////////////////////////////////////////////////////////
 }
+
+public class DataRaiz
+{
+    public Data[] jogadores;
+}
+
+

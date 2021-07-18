@@ -16,6 +16,10 @@ public class Gun : MonoBehaviour {
     Transform shellSpawn;
 
     string gunName = "Pistol";
+    public int bulletCount = 15;
+    public GameObject CanvasResultado;
+    
+    
 
     private void Awake() {
 
@@ -36,8 +40,12 @@ public class Gun : MonoBehaviour {
 
     void Update() {
         
+        
         if(Input.GetKeyDown(KeyCode.Mouse0) && Cursor.visible == false) {
 
+        
+            bulletCount--;
+            
             animator.Play("Shoot", -1, 0);
 
             audioSource.Play();
@@ -51,18 +59,33 @@ public class Gun : MonoBehaviour {
 
         } 
 
+        if(CanvasResultado.activeSelf)
+        {
+             
+            //CanvasResultado.SetActive(true);
+
+            //Cursor.visible = true;
+            bulletCount = 15;
+           // jogador.name = nameInputField.text;
+           // Debug.Log(jogador.name);
+
+        }
+        
+        //Debug.Log(FindObjectOfType<Bullet>().getAcertos());
+
     }
 
     void ShootBullet() {
 
         Transform bulletObj = Instantiate(bulletPrefab, shotSpawn.position, shotSpawn.rotation);
         Destroy(bulletObj.gameObject, 10f);
-
+        
         RaycastHit hitInfo;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.GetForwardDirection(), out hitInfo, Mathf.Infinity, LayerMask.GetMask("hittable"))) {
 
-
+            
             bulletObj.GetComponent<Bullet>().SetDirection((hitInfo.point - shotSpawn.position).normalized);
+            //Debug.Log(bulletObj.GetComponent<Bullet>().acertosBullet);
 
         } else {
             bulletObj.GetComponent<Bullet>().SetDirection(fpsCam.GetForwardDirection());
@@ -85,7 +108,15 @@ public class Gun : MonoBehaviour {
         }
     }
 
+    public int getBullet()
+    {
+        return bulletCount;
+    }
 
+    public void setBullet(int bullet)
+    {
+        bulletCount = bullet;
+    }
    
 
 }
