@@ -7,17 +7,16 @@ public class Target : MonoBehaviour, IShotHit {
 
     Animator animator;
     public int acertos = 0;
-   // public List<Vector3>[] vetores;
     public List<Vector3> vetores = new List<Vector3>();
     public float mediaX = 0;
     public float mediaY = 0;
     
-    public int tiros = 3;
+    
 
     
 
     void Start() {
-        //List<Vector3> vetores = new List<Vector3>();
+        
           
         animator = transform.parent.GetComponent<Animator>();
     }
@@ -27,13 +26,11 @@ public class Target : MonoBehaviour, IShotHit {
         animator.Play("TargetShot", -1, 0);
         
         acertos ++;
-        //Debug.Log(acertos);
         Debug.Log(acertos);
         
     }
 
     public void Posicao(Vector3 coordenada){
-            //vetores.Add(new Vector3(2,1,2));
             Debug.Log(coordenada);
             vetores.Add(coordenada);
             mediaX += coordenada[0];
@@ -83,18 +80,3 @@ public class Target : MonoBehaviour, IShotHit {
 
 }
 
-/*
-   public void ShootBullet() {
-
-       Transform obj = Instantiate(bulletPrefab, shotSpawn.position, shotSpawn.rotation);
-       Destroy(obj.gameObject, 10);
-
-       RaycastHit hit;
-       if (Physics.Raycast(fpsCam.transform.position, fpsCam.GetForwardDirection(), out hit, Mathf.Infinity, LayerMask.GetMask("hittable"))) {
-           obj.GetComponent<Bullet>().SetDirection((hit.point - shotSpawn.position).normalized);
-       } else {
-           obj.GetComponent<Bullet>().SetDirection(fpsCam.GetForwardDirection());
-       }
-
-   }
-*/
