@@ -41,7 +41,7 @@ public class GameLogic : MonoBehaviour
     public Text DispersaoResultado;
 
     public TextAsset textJSON;
-   // public Ranking ranking;
+
     public Text rankingNome;
     public Text rankingImpactos;
     public Text rankingTempo;
@@ -63,13 +63,12 @@ public class GameLogic : MonoBehaviour
     [System.Serializable]
     public class PlayerList
     {
-       // public Player[] player;
+       
 
 
         public List<Player> player = new List<Player>();
         
-// subjects.add(new Subject{....});
-// subjects.add(new Subject{....});
+
     }
 
 
@@ -88,7 +87,6 @@ public class GameLogic : MonoBehaviour
 
     public void SerializarJSON()
     {
-        //JsonUtility.FromJsonOverwrite(json, myPlayerList);
         
         
         json = JsonUtility.ToJson(myPlayerList);
@@ -116,8 +114,8 @@ public class GameLogic : MonoBehaviour
         Button btnAvaliacao = BotaoAvaliacao.GetComponent<Button>();
 		btnAvaliacao.onClick.AddListener(ExibeAvaliacao);
         
-        /*Button btnVoltar = BotaoBack.GetComponent<Button>();
-		btnVoltar.onClick.AddListener(Voltar); */
+        Button btnVoltarTela = BotaoBack.GetComponent<Button>();
+		btnVoltarTela.onClick.AddListener(Voltar); 
 
         Button btnNew = BotaoNew.GetComponent<Button>();
 		btnNew.onClick.AddListener(Iniciar);
@@ -141,26 +139,6 @@ public class GameLogic : MonoBehaviour
         Button btnRankingResultado = BotaoRankingResultado.GetComponent<Button>();
 		btnRankingResultado.onClick.AddListener(Ranking);
 
-
-        //Debug.Log(myPlayerList.player[0].name);
-
-        //ranking.text = myPlayerList.player[0].name;
-         
-        //  for(int i = 0; i < myPlayerList.player.Count; i++)
-        // {
-        //     auxNome += myPlayerList.player[i].name + "\n"; 
-
-        // }
-
-        //  for(int i = 0; i < myPlayerList.player.Count; i++)
-        // {
-        //     auxImpactos += myPlayerList.player[i].acertos + "\n"; 
-
-        // }
-        // // Debug.Log(aux);
-
-        // rankingNome.text = auxNome;
-        // rankingImpactos.text = auxImpactos;
 
     }
 
@@ -194,8 +172,7 @@ public class GameLogic : MonoBehaviour
 
     void Iniciar() {
         
-       // DAO.getInstance().data.setName(nameInputField.text);
-        //Debug.Log("Salvei o nome " + nameInputField.text);
+       
        NameResultado.text = nameInputField.text;
 
         jogador.nome = nameInputField.text;
@@ -203,36 +180,19 @@ public class GameLogic : MonoBehaviour
         AcertosResultado.text = "-";
         MencaoResultado.text = "-";
         DispersaoResultado.text = "-";
-        
-        /*
-        NovaAvaliacao.SetActive(false);
-        timerCanvas.SetActive(true);
-        gunCanvas.SetActive(true);
-        gun.SetActive(true);
-        */
         TimerStart = Time.time;
         timerCanvas.SetActive(true);
-        //Cursor.visible = false;
+        
         NovaAvaliacao.SetActive(false);
        
-        // //Cursor.lockState = CursorLockMode.Locked;
-        // TimerStart = Time.time;
-
-        // // GameObject Target = GameObject.Find("Target");
-        // // Target target = Target.GetComponent<Target>();
-        // Cursor.lockState = CursorLockMode.Locked;
-        // Cursor.visible = false;
+       
         
         Invoke("InvokeAvaliacao", 0.4f);
 
     }
 
     void InvokeAvaliacao() {
-        //Cursor.lockState = CursorLockMode.Locked;
-        
 
-        // GameObject Target = GameObject.Find("Target");
-        // Target target = Target.GetComponent<Target>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Weapon.SetActive(true);
@@ -254,13 +214,7 @@ public class GameLogic : MonoBehaviour
          auxTempo = "";
          auxRankingDispersao = "";
 
-         
-         //List<Player> sorted = (myPlayerList.player).OrderBy(x => x.acertos).ToList();
-        //  var nums = new List<int> { 2, 1, 8, 0, 4, 3, 5, 7, 9 };
-
-        // nums.Sort();
-        // Debug.Log(string.Join(" ", nums));
-       // myPlayerList.player.Sort((x, y) => y.acertos.CompareTo(x.acertos));
+   
 
         List<Player> aux = new List<Player>();
         aux = myPlayerList.player;
@@ -271,7 +225,6 @@ public class GameLogic : MonoBehaviour
                     });
 
 
-       // Debug.Log(myPlayerList.player[0].nome);
 
        for(int i = 0; i < aux.Count; i++)
         {
@@ -280,9 +233,6 @@ public class GameLogic : MonoBehaviour
             auxTempo += aux[i].tempo + "\n"; 
             auxRankingDispersao += aux[i].dispersao.ToString("F") + "\n";
         }
-
-    
-        // Debug.Log(aux);
 
         rankingNome.text = auxNome;
         rankingImpactos.text = auxImpactos;
@@ -305,14 +255,6 @@ public class GameLogic : MonoBehaviour
     void Update()
     {
         
-        
-
-
-        
-
-        //alvo.GetComponent<Target>().getHit();
-
-        //Debug.Log(alvo.GetComponent<Target>().getHit());
 
         if(timerCanvas.activeSelf) {
 
@@ -324,59 +266,26 @@ public class GameLogic : MonoBehaviour
             ((seconds < 10) ? "0" + seconds : "" + seconds); 
         }
 
-        // if(CanvasResultado.activeSelf) {
-        // jogador.acertos = FindObjectOfType<Bullet>().getAcertos();
-        // Debug.Log(jogador.acertos);
-        // }
-
-        //Debug.Log(arma.GetComponent<Gun>().getBullet());
-        
-       //if(CanvasResultado.activeSelf) {
-        //if(false) {
+       
 
             if(arma.GetComponent<Gun>().getBullet()<=0) {
             
             Invoke("CallFinalAvaliacao", 3f);
-            // Cursor.visible = true;
-            // Cursor.lockState = CursorLockMode.None;
-
-            // //arma.GetComponent<Gun>().setBullet = 3;
-            // timerCanvas.SetActive(false);
-            
-            // TimeResultado.text = timerText.text;
-            // AcertosResultado.text = (alvo.GetComponent<Target>().getHit()).ToString();
-           
-
-            // int hit = alvo.GetComponent<Target>().getHit();
-            // MencaoResultado.text = mencao(hit);
-
-            // double disp = alvo.GetComponent<Target>().Dispersao();
-            // DispersaoResultado.text = disp.ToString("F");
-            
-            //myPlayerList.player.Add(new Player{nome=jogador.nome, acertos=hit, tempo = timerText.text, dispersao = disp});
-           // SerializarJSON();
-            
-
-          //  Debug.Log(alvo.GetComponent<Target>().Dispersao().ToString("F"));
-
 
           CanvasResultado.SetActive(true);
           timerCanvas.SetActive(false);
           TimeResultado.text = timerText.text;
-           Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+          Cursor.visible = true;
+          Cursor.lockState = CursorLockMode.None;
             
         }
 
     }
 
     public void CallFinalAvaliacao(){
-        
-
-            //arma.GetComponent<Gun>().setBullet = 3;
+    
             
             
-        
             AcertosResultado.text = (alvo.GetComponent<Target>().getHit()).ToString();
            
 
@@ -388,33 +297,10 @@ public class GameLogic : MonoBehaviour
             Weapon.SetActive(false);
             myPlayerList.player.Add(new Player{nome=jogador.nome, acertos=hit, tempo = timerText.text, dispersao = disp});
             SerializarJSON();
-           // CanvasResultado.SetActive(true);
-           //Invoke("CallDispersao", 3f);
+          
             
     }
 
-    // public void CallDispersao(){
-
-    //         double disp = alvo.GetComponent<Target>().Dispersao();
-    //         DispersaoResultado.text = disp.ToString("F");
-    // }
-
-
-
-    //MÉTODOS PARA INTERAÇÃO COM A UI
-   /* public void OnClickStartButton()
-    {
-        
-        
-        DAO.getInstance().data.setName(nameInputField.text);
-        Debug.Log("Salvei o nome " + nameInputField.text);
-        //initialCanvas.SetActive(false);
-        //NovaAvaliacao.SetActive(true);
-        //timerCanvas.SetActive(true);
-        //gunCanvas.SetActive(true);
-       // gun.SetActive(true);
-        
-    } */
     
     public void OnClickUpButton()
     {

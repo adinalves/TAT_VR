@@ -13,8 +13,6 @@ public class Bullet : MonoBehaviour {
     BoxCollider collider;
 
 
-    public int acertosBullet = 0;
-
     void Start() {
 
         collider = GetComponent<BoxCollider>();
@@ -32,21 +30,12 @@ public class Bullet : MonoBehaviour {
 
         if(colliders.Length > 0) {
             
-            
-            //Debug.Log(transform.position);
-           // Debug.Log(typeof(transform.position));
-            
             IShotHit hitted = colliders[0].GetComponent<IShotHit>();
-            //Debug.Log("Atirou");
-            //Debug.Log(transform.position);
-           // hitted.Posicao(transform.position);
+           
             if(hitted != null) {
                 hitted.Posicao(transform.position);
-                acertosBullet++;
-                //Debug.Log("Acertou");
-               //Debug.Log("Posicao: " + transform.position);
-                // hitted.Posicao(transform.position);
                 hitted.Hit(velocity.normalized);
+                
             }
 
             Destroy(gameObject);
@@ -54,11 +43,6 @@ public class Bullet : MonoBehaviour {
         }
 
 
-    }
-
-    public int getAcertos(){
-        //return acertosBullet;
-        return acertosBullet;
     }
 
     public void SetDirection(Vector3 direction) {

@@ -53,25 +53,20 @@ public class Gun : MonoBehaviour {
             shootEffects.MuzzleFlash(shotSpawn.position, shotSpawn.rotation);
             shootEffects.Shell(shellSpawn.position, shellSpawn.rotation);
 
-            // implementação do tiro vem aqui....
-            // ShootRaycast();
+            // implementação do tiro vem aqui
             ShootBullet();
 
         } 
 
         if(CanvasResultado.activeSelf)
         {
-             
-            //CanvasResultado.SetActive(true);
-
-            //Cursor.visible = true;
+            
             bulletCount = 15;
-           // jogador.name = nameInputField.text;
-           // Debug.Log(jogador.name);
+        
 
         }
         
-        //Debug.Log(FindObjectOfType<Bullet>().getAcertos());
+        
 
     }
 
@@ -85,7 +80,7 @@ public class Gun : MonoBehaviour {
 
             
             bulletObj.GetComponent<Bullet>().SetDirection((hitInfo.point - shotSpawn.position).normalized);
-            //Debug.Log(bulletObj.GetComponent<Bullet>().acertosBullet);
+            
 
         } else {
             bulletObj.GetComponent<Bullet>().SetDirection(fpsCam.GetForwardDirection());
@@ -94,29 +89,14 @@ public class Gun : MonoBehaviour {
     }
 
 
-    void ShootRaycast() {
 
-        RaycastHit hitInfo;
-        if(Physics.Raycast(fpsCam.transform.position, fpsCam.GetForwardDirection(), out hitInfo, Mathf.Infinity, LayerMask.GetMask("hittable"))) {
-
-            IShotHit hitted = hitInfo.transform.GetComponent<IShotHit>();
-            if(hitted != null) {
-
-                hitted.Hit(fpsCam.GetForwardDirection());
-
-            }
-        }
-    }
 
     public int getBullet()
     {
         return bulletCount;
     }
 
-    public void setBullet(int bullet)
-    {
-        bulletCount = bullet;
-    }
+   
    
 
 }

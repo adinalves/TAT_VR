@@ -79,25 +79,4 @@ public class Player : MonoBehaviour {
 
 }
 
-/*
 
-// tirar na explicação
-public Transform bulletPrefab;
-
-public void ShootRaycast() {
-
-    RaycastHit hit;
-    if (Physics.Raycast(fpsCam.transform.position, fpsCam.GetForwardDirection(), out hit, Mathf.Infinity, LayerMask.GetMask("hittable"))) {
-
-        IShotHit obj = hit.transform.GetComponent<IShotHit>();
-        if (obj != null) {
-            obj.Hit(fpsCam.GetForwardDirection());
-        }
-
-    }
-
-}
-
-
-
-    */
