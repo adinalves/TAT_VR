@@ -5087,7 +5087,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22734edd578b0422bbe3c01e180bbfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: {fileID: 0}
 --- !u!114 &918888798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5497,7 +5496,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22734edd578b0422bbe3c01e180bbfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: {fileID: 0}
 --- !u!1 &1001110149
 GameObject:
   m_ObjectHideFlags: 0
@@ -5525,7 +5523,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001110149}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.17, y: 0, z: 0}
+  m_LocalPosition: {x: -0.39, y: 0.09, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 785918271}
@@ -6502,7 +6500,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15866
+  m_Name: pb_Mesh15858
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7459,6 +7457,7 @@ MonoBehaviour:
   NovaAvaliacao: {fileID: 1190907367}
   CanvasRanking: {fileID: 1398681544}
   CanvasResultado: {fileID: 587719941}
+  Canvas: {fileID: 2053121199}
   Weapon: {fileID: 1001110149}
   timerText: {fileID: 1317900050}
   gunCanvas: {fileID: 0}

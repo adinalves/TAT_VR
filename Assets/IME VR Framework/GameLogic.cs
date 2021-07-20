@@ -13,6 +13,7 @@ public class GameLogic : MonoBehaviour
     public GameObject NovaAvaliacao;
     public GameObject CanvasRanking;
     public GameObject CanvasResultado;
+    public GameObject Canvas;
     public GameObject Weapon;
     public Text timerText;
     public GameObject gunCanvas;
@@ -108,6 +109,7 @@ public class GameLogic : MonoBehaviour
        myPlayerList = JsonUtility.FromJson<PlayerList>(textJSON.text);
 
         Weapon.SetActive(false);
+        Canvas.SetActive(false);
         
         //Leitura dos dados persistidos em JSON
        // DAO.getInstance().load();
@@ -196,6 +198,7 @@ public class GameLogic : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Weapon.SetActive(true);
+       // Canvas.SetActive(true);
     }
 
 
@@ -295,6 +298,7 @@ public class GameLogic : MonoBehaviour
             double disp = alvo.GetComponent<Target>().Dispersao();
             DispersaoResultado.text = disp.ToString("F");
             Weapon.SetActive(false);
+            Canvas.SetActive(false);
             myPlayerList.player.Add(new Player{nome=jogador.nome, acertos=hit, tempo = timerText.text, dispersao = disp});
             SerializarJSON();
           
