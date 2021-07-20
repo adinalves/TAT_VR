@@ -4,9 +4,9 @@ public class Bullet : MonoBehaviour {
 
     Vector3 velocity;
 
-    float speed = 20f;
+    float speed = 10f;
 
-    float gravity = 0.5f;
+    float gravity = 0.25f;
 
     float wind    = 0;
 

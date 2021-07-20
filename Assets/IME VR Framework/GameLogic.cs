@@ -270,7 +270,7 @@ public class GameLogic : MonoBehaviour
 
             if(arma.GetComponent<Gun>().getBullet()<=0) {
             
-            Invoke("CallFinalAvaliacao", 3f);
+            Invoke("CallFinalAvaliacao", 5f);
 
           CanvasResultado.SetActive(true);
           timerCanvas.SetActive(false);
